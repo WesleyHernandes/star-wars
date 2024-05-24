@@ -24,5 +24,8 @@ import Header from "../components/Header/index.vue";
   display: flex;
   flex-direction: column;
   flex-grow: 1;
+  background-image: url("/background.png");
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 </style>

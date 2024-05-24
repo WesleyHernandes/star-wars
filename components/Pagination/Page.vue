@@ -1,6 +1,15 @@
 <template>
-  <NuxLink class="page-redirect"> 1 </NuxLink>
+  <NuxLink class="page-redirect" :class="{ active: active }">
+    {{ label }}
+  </NuxLink>
 </template>
+
+<script setup>
+defineProps({
+  label: String,
+  active: Boolean,
+});
+</script>
 
 <style scoped>
 .page-redirect {

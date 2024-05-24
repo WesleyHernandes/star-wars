@@ -1,13 +1,24 @@
 <template>
   <article class="card-container">
     <NuxtLink class="redirect" to="/">
-      <h3 class="name">Anakin Skywalker</h3>
-      <p class="text">Altura:172cm</p>
-      <p class="text">Peso:77</p>
+      <h3 class="name">{{ people?.name || "..." }}</h3>
+      <p class="text">Altura: {{ people?.height || "..." }}cm</p>
+      <p class="text">Peso: {{ people?.mass || "..." }}</p>
       <span class="more">Ver todos os detalhes</span>
     </NuxtLink>
   </article>
 </template>
+
+<script setup>
+import { onMounted } from "vue";
+
+defineProps({
+  people: {
+    type: Object,
+    default: () => {},
+  },
+});
+</script>
 
 <style scoped>
 .card-container {
@@ -16,6 +27,7 @@
   width: 100%;
   border: solid 1px #ffffff;
   border-radius: 8px;
+  background-color: #000000;
 }
 .card-container .redirect {
   outline: 0px;

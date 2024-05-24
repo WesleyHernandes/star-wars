@@ -8,19 +8,21 @@
         </h3>
       </div>
 
-      <Field />
+      <Field v-model="query" @onSearch="handleSearch" />
 
-      <!-- <div class="results">
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-      </div> -->
+      <div v-if="results.length > 0" class="results">
+        <Card
+          v-for="(people, index) in results"
+          :key="`card-people-${index}`"
+          :people="people"
+        />
+      </div>
 
-      <!-- <NotFound /> -->
+      <template v-if="notFoundVisible">
+        <NotFound :query="query" />
+      </template>
 
+      <!-- OBS.: A API no momento não fornece a opção de limit para criar a paginação dos resultados -->
       <!-- <Pagination /> -->
     </div>
   </section>
@@ -31,15 +33,39 @@ import Card from "./Card.vue";
 import Field from "./Field/index.vue";
 import Pagination from "../Pagination/index.vue";
 import NotFound from "./NotFound.vue";
+import { ref } from "vue";
+import { BASE_URL } from "@/utils/index.ts";
+
+const query = ref("");
+const results = ref([]);
+const notFoundVisible = ref(false);
+
+const handleSearch = async () => {
+  results.value = [];
+  notFoundVisible.value = false;
+
+  await $fetch(`${BASE_URL}people/?search=${query.value}`, {
+    onResponse({ request, response, options }) {
+      const data = response?._data?.results || [];
+      if (data.length === 0) notFoundVisible.value = true;
+      results.value = data;
+    },
+  });
+};
+
+watch(query, () => {
+  notFoundVisible.value = false;
+});
 </script>
 
 <style scoped>
 .search-container {
   display: flex;
+  flex-grow: 1;
   flex-direction: column;
   justify-content: flex-start;
   width: 100%;
-  min-height: 100vh;
+  height: 100%;
 }
 @media (min-width: 1280px) {
   .search-container {

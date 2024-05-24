@@ -1,23 +1,34 @@
 <template>
-  <section class="field-container">
-    <button class="btn-send">
+  <form class="field-container" @submit.prevent="$emit('onSearch')">
+    <button type="submit" class="btn-send">
       <IconSend />
     </button>
 
     <input
       class="field"
       placeholder="Busque por pessoas, planetas, naves espaciais.."
+      v-model="query"
     />
 
-    <button class="btn-clear">
+    <button type="button" class="btn-clear" @click="clearField">
       <IconClear />
     </button>
-  </section>
+  </form>
 </template>
 
 <script setup>
 import IconSend from "./IconSend.vue";
 import IconClear from "./IconClear.vue";
+
+defineEmits(["onSearch"]);
+
+const query = defineModel({
+  default: "",
+});
+
+const clearField = () => {
+  query.value = "";
+};
 </script>
 
 <style scoped>

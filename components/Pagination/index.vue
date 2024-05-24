@@ -1,9 +1,9 @@
 <template>
   <section class="pages-container">
-    <Page />
-    <Page />
-    <Page />
-    <Page />
+    <Page label="1" :active="true" />
+    <Page label="2" />
+    <Page label="3" />
+    <Page label="4" />
   </section>
 </template>
 

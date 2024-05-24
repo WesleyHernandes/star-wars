@@ -1,5 +1,7 @@
 <template>
-  <Search />
+  <NuxtLayout name="with-background">
+    <Search />
+  </NuxtLayout>
 </template>
 
 <script setup>

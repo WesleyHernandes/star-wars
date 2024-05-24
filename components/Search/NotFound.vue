@@ -1,11 +1,17 @@
 <template>
   <div class="not-found">
     <h2 class="title">
-      Não conseguimos encontrar nenhum personagem com o termo “Groot”:
+      Não conseguimos encontrar nenhum personagem com o termo “{{ query }}”:
     </h2>
     <h3 class="subtitle">tente novamente com outro termo de pesquisa</h3>
   </div>
 </template>
+
+<script setup>
+defineProps({
+  query: String,
+});
+</script>
 
 <style scoped>
 .not-found {
