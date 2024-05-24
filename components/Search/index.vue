@@ -9,12 +9,28 @@
       </div>
 
       <Field />
+
+      <!-- <div class="results">
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+      </div> -->
+
+      <!-- <NotFound /> -->
+
+      <!-- <Pagination /> -->
     </div>
   </section>
 </template>
 
 <script setup>
+import Card from "./Card.vue";
 import Field from "./Field/index.vue";
+import Pagination from "../Pagination/index.vue";
+import NotFound from "./NotFound.vue";
 </script>
 
 <style scoped>
@@ -38,6 +54,7 @@ import Field from "./Field/index.vue";
   max-width: 1090px;
   margin: 0 auto;
   padding: 50px 16px;
+  gap: 70px;
 }
 @media (min-width: 768px) {
   .search-content {
@@ -49,7 +66,6 @@ import Field from "./Field/index.vue";
   flex-direction: column;
   width: 100%;
   gap: 16px;
-  margin-bottom: 30px;
 }
 .search-content .text .title {
   display: block;
@@ -66,14 +82,29 @@ import Field from "./Field/index.vue";
   text-align: center;
 }
 @media (min-width: 768px) {
-  .search-content .text {
-    margin-bottom: 72px;
-  }
   .search-content .text .title {
     font-size: 32px;
   }
   .search-content .text .subtitle {
     font-size: 24px;
+  }
+}
+.search-content .results {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  width: 100%;
+  max-width: 986px;
+  gap: 24px;
+  margin: 0 auto;
+}
+@media (min-width: 768px) {
+  .search-content .results {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (min-width: 1024px) {
+  .search-content .results {
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 </style>
