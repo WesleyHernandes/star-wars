@@ -1,0 +1,13 @@
+:root {
+  --highlight: #dba90d;
+  --textLight: #ffffff;
+  --textMedium: #8d8d8d;
+  --textDark: #000000;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Inter";
+}
