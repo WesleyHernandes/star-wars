@@ -1,5 +1,5 @@
 <template>
-  <NuxtLayout name="with-background">
+  <NuxtLayout>
     <Search />
   </NuxtLayout>
 </template>

@@ -1,5 +1,5 @@
 <template>
-  <form class="field-container" @submit.prevent="$emit('onSearch')">
+  <form class="field-container" @submit.prevent="() => {}">
     <button type="submit" class="btn-send">
       <IconSend />
     </button>
@@ -7,7 +7,7 @@
     <input
       class="field"
       placeholder="Busque por pessoas, planetas, naves espaciais.."
-      v-model="query"
+      @keypress="(e) => setQuery(e.target.value)"
     />
 
     <button type="button" class="btn-clear" @click="clearField">
@@ -19,16 +19,12 @@
 <script setup>
 import IconSend from "./IconSend.vue";
 import IconClear from "./IconClear.vue";
+import { useSearch } from "@/store/search.ts";
 
-defineEmits(["onSearch"]);
+const store = useSearch();
+const { setQuery } = store;
 
-const query = defineModel({
-  default: "",
-});
-
-const clearField = () => {
-  query.value = "";
-};
+const clearField = () => setQuery("");
 </script>
 
 <style scoped>

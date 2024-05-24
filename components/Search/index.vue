@@ -8,7 +8,7 @@
         </h3>
       </div>
 
-      <Field v-model="query" @onSearch="handleSearch" />
+      <Field v-model="query" />
 
       <div v-if="results.length > 0" class="results">
         <Card
@@ -34,9 +34,13 @@ import Field from "./Field/index.vue";
 import Pagination from "../Pagination/index.vue";
 import NotFound from "./NotFound.vue";
 import { ref } from "vue";
+import { storeToRefs } from "pinia";
 import { BASE_URL } from "@/utils/index.ts";
+import { useSearch } from "@/store/search";
 
-const query = ref("");
+const store = useSearch();
+const { query } = storeToRefs(store);
+
 const results = ref([]);
 const notFoundVisible = ref(false);
 
@@ -55,6 +59,7 @@ const handleSearch = async () => {
 
 watch(query, () => {
   notFoundVisible.value = false;
+  handleSearch();
 });
 </script>
 

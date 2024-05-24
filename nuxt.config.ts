@@ -2,4 +2,5 @@
 export default defineNuxtConfig({
   devtools: { enabled: true },
   css: ["~/assets/css/fonts.css", "~/assets/css/style.css"],
+  modules: ["@pinia/nuxt", "nuxt-swiper"],
 });

@@ -1,16 +1,17 @@
 <template>
-  <article class="card-container">
-    <NuxtLink class="redirect" to="/">
+  <article class="card-container" @click="() => handlePeople(people)">
+    <button type="button" class="redirect">
       <h3 class="name">{{ people?.name || "..." }}</h3>
       <p class="text">Altura: {{ people?.height || "..." }}cm</p>
       <p class="text">Peso: {{ people?.mass || "..." }}</p>
       <span class="more">Ver todos os detalhes</span>
-    </NuxtLink>
+    </button>
   </article>
 </template>
 
 <script setup>
-import { onMounted } from "vue";
+import { usePeople } from "@/store/people.ts";
+import { formatToUrl } from "@/utils/index.ts";
 
 defineProps({
   people: {
@@ -18,6 +19,15 @@ defineProps({
     default: () => {},
   },
 });
+
+const router = useRouter();
+const store = usePeople();
+const { setPeople } = store;
+
+const handlePeople = (people) => {
+  setPeople(people);
+  router.push(`/personagem/${formatToUrl(people.name)}`);
+};
 </script>
 
 <style scoped>
@@ -30,12 +40,15 @@ defineProps({
   background-color: #000000;
 }
 .card-container .redirect {
+  cursor: pointer;
   outline: 0px;
   display: flex;
   flex-direction: column;
   width: 100%;
   padding: 30px 25px;
   text-decoration: none;
+  border: none;
+  background-color: transparent;
 }
 @media (min-width: 576px) {
   .card-container .redirect {
