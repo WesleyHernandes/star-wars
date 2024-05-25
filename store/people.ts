@@ -16,6 +16,7 @@ export const usePeople = defineStore("people", () => {
   const specieUrl = computed(() => people.value?.species[0]);
   const filmsUrl = computed(() => people.value?.films);
   const vehiclesUrl = computed(() => people.value?.vehicles);
+  const starshipsUrl = computed(() => people.value?.starships);
 
   return {
     people,
@@ -23,6 +24,7 @@ export const usePeople = defineStore("people", () => {
     specieUrl,
     filmsUrl,
     vehiclesUrl,
+    starshipsUrl,
     reset,
   };
 });

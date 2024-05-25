@@ -46,7 +46,9 @@
       </SwiperSlide>
 
       <SwiperSlide>
-        <Board />
+        <Board>
+          <Starships />
+        </Board>
       </SwiperSlide>
     </Swiper>
 
@@ -64,6 +66,7 @@ import Detail from "@/components/People/Detail/index.vue";
 import Films from "@/components/People/Films/index.vue";
 import Specie from "@/components/People/Specie/index.vue";
 import Vehicles from "@/components/People/Vehicles/index.vue";
+import Starships from "@/components/People/Starships/index.vue";
 import { Navigation, Pagination } from "swiper/modules";
 
 const slideOptions = [
