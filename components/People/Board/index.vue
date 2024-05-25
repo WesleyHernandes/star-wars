@@ -15,9 +15,15 @@
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  padding: 28px 40px;
+  padding: 16px;
   padding-right: 0px;
   gap: 26px;
+}
+@media (min-width: 576px) {
+  .board-container {
+    padding: 28px 40px;
+    padding-right: 0px;
+  }
 }
 .board-container::before {
   position: absolute;
@@ -35,18 +41,28 @@
 .board-container .logo {
   position: relative;
   z-index: 2;
-  display: block;
+  display: none;
   width: 37%;
   max-width: 321px;
+}
+@media (min-width: 1024px) {
+  .board-container .logo {
+    display: block;
+  }
 }
 .board-container .board-content {
   position: relative;
   z-index: 2;
   display: flex;
   flex-direction: column;
-  width: 73%;
+  width: 100%;
   padding: 46px 40px;
   border-radius: 16px;
   background-color: #151515;
+}
+@media (min-width: 1024px) {
+  .board-container .board-content {
+    width: 73%;
+  }
 }
 </style>
