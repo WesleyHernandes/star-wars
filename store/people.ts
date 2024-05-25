@@ -7,5 +7,8 @@ export const usePeople = defineStore("people", {
     setPeople(payload: string) {
       this.people = payload;
     },
+    reset() {
+      this.people = {};
+    },
   },
 });
