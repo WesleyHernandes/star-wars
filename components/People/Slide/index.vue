@@ -40,7 +40,9 @@
       </SwiperSlide>
 
       <SwiperSlide>
-        <Board />
+        <Board>
+          <Vehicles />
+        </Board>
       </SwiperSlide>
 
       <SwiperSlide>
@@ -61,6 +63,7 @@ import Board from "@/components/People/Board/index.vue";
 import Detail from "@/components/People/Detail/index.vue";
 import Films from "@/components/People/Films/index.vue";
 import Specie from "@/components/People/Specie/index.vue";
+import Vehicles from "@/components/People/Vehicles/index.vue";
 import { Navigation, Pagination } from "swiper/modules";
 
 const slideOptions = [
