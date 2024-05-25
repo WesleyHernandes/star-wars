@@ -8,7 +8,7 @@
         </h3>
       </div>
 
-      <Field v-model="query" />
+      <Field />
 
       <div v-if="results.length > 0" class="results">
         <Card
@@ -22,7 +22,8 @@
         <NotFound :query="query" />
       </template>
 
-      <!-- OBS.: A API no momento não fornece a opção de limit para criar a paginação dos resultados -->
+      <!-- OBS.: A API no momento não fornece a opção para setar limite nas requisições, 
+        assim não foi possivel criar a paginação dos resultados, porém o componente foi construido -->
       <!-- <Pagination /> -->
     </div>
   </section>
@@ -33,33 +34,28 @@ import Card from "./Card.vue";
 import Field from "./Field/index.vue";
 import Pagination from "../Pagination/index.vue";
 import NotFound from "./NotFound.vue";
-import { ref } from "vue";
+import { ref, watch, computed } from "vue";
 import { storeToRefs } from "pinia";
-import { BASE_URL } from "@/utils/index.ts";
 import { useSearch } from "@/store/search";
 
 const store = useSearch();
 const { query } = storeToRefs(store);
 
-const results = ref([]);
 const notFoundVisible = ref(false);
 
-const handleSearch = async () => {
-  results.value = [];
-  notFoundVisible.value = false;
+const endpoint = computed(() =>
+  query.value ? `https://swapi.dev/api/people/?search=${query.value}` : ""
+);
+const results = computed(() => data.value?.results || []);
 
-  await $fetch(`${BASE_URL}people/?search=${query.value}`, {
-    onResponse({ request, response, options }) {
-      const data = response?._data?.results || [];
-      if (data.length === 0) notFoundVisible.value = true;
-      results.value = data;
-    },
-  });
-};
+const { data, pending, error, refresh } = await useLazyFetch(endpoint, {
+  method: "GET",
+  watch: [endpoint],
+});
 
-watch(query, () => {
+watch(query.value, () => {
+  data.value.results = [];
   notFoundVisible.value = false;
-  handleSearch();
 });
 </script>
 

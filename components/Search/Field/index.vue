@@ -7,7 +7,8 @@
     <input
       class="field"
       placeholder="Busque por pessoas, planetas, naves espaciais.."
-      @keyup="(e) => setQuery(e.target.value)"
+      :value="query"
+      @keyup="handleInput"
     />
 
     <button type="button" class="btn-clear" @click="clearField">
@@ -19,10 +20,18 @@
 <script setup>
 import IconSend from "./IconSend.vue";
 import IconClear from "./IconClear.vue";
+import { storeToRefs } from "pinia";
 import { useSearch } from "@/store/search.ts";
 
 const store = useSearch();
+const { query } = storeToRefs(store);
 const { setQuery } = store;
+
+let searchInterval;
+const handleInput = (e) => {
+  clearTimeout(searchInterval);
+  searchInterval = setTimeout(() => setQuery(e.target.value), 600);
+};
 
 const clearField = () => setQuery("");
 </script>
