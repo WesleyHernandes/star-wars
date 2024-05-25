@@ -14,11 +14,13 @@ export const usePeople = defineStore("people", () => {
   };
 
   const specieUrl = computed(() => people.value?.species[0]);
+  const filmsUrl = computed(() => people.value?.films);
 
   return {
     people,
-    specieUrl,
     setPeople,
+    specieUrl,
+    filmsUrl,
     reset,
   };
 });

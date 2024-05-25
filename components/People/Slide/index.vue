@@ -28,7 +28,9 @@
       </SwiperSlide>
 
       <SwiperSlide>
-        <Board> </Board>
+        <Board>
+          <Films />
+        </Board>
       </SwiperSlide>
 
       <SwiperSlide>
@@ -57,6 +59,7 @@ import IconPrev from "@/components/People/Board/IconPrev.vue";
 import IconNext from "@/components/People/Board/IconNext.vue";
 import Board from "@/components/People/Board/index.vue";
 import Detail from "@/components/People/Detail/index.vue";
+import Films from "@/components/People/Films/index.vue";
 import Specie from "@/components/People/Specie/index.vue";
 import { Navigation, Pagination } from "swiper/modules";
 
