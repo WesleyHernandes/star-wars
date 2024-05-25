@@ -1,6 +1,6 @@
 <template>
   <template v-if="filmsUrl">
-    <Selection :current="current" :options="collection" v-model="current" />
+    <Selection :current="current" :options="options" v-model="current" />
 
     <template v-for="(film, index) in collection" :key="`people-film-${index}`">
       <div v-if="current?.url === film.url" class="films-container">
@@ -17,12 +17,14 @@
 <script setup>
 import Info from "@/components/People/Info.vue";
 import NotFound from "@/components/People/NotFound/index.vue";
-import Selection from "@/components/People/Films/Selection/index.vue";
+import Selection from "@/components/People/Selection/index.vue";
+import { watchEffect } from "vue";
 import { usePeople } from "@/store/people.ts";
 
 const store = usePeople();
 const { filmsUrl } = storeToRefs(store);
 const current = ref();
+const options = ref([]);
 
 const {
   data: collection,
@@ -37,6 +39,15 @@ const {
   },
   { watch: [filmsUrl] }
 );
+
+watchEffect(() => {
+  if (collection.value?.length > 0) {
+    options.value = collection.value.map((data) => ({
+      label: data?.title,
+      url: data?.url,
+    }));
+  }
+});
 </script>
 
 <style scoped>

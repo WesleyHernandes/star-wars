@@ -1,7 +1,7 @@
 <template>
   <div class="selection-container">
     <button type="button" class="selector" @click="() => (visible = !visible)">
-      <span class="text">{{ current?.title || "..." }}</span>
+      <span class="text">{{ current?.label || "..." }}</span>
       <div class="icon" :class="{ active: visible }">
         <Icon />
       </div>
@@ -13,9 +13,9 @@
         type="button"
         class="option"
         :class="{ active: option.url === current?.url }"
-        @click="() => setCurrent({ title: option.title, url: option.url })"
+        @click="() => setCurrent(option)"
       >
-        {{ option.title }}
+        {{ option.label }}
       </button>
     </div>
   </div>
@@ -44,7 +44,7 @@ const setCurrent = (payload) => {
 watchEffect(() => {
   if (props.options?.length > 0 && !current.value) {
     const data = props.options[0];
-    current.value = { title: data.title, url: data.url };
+    current.value = data;
   }
 });
 </script>
