@@ -1,19 +1,23 @@
-import { ref } from "vue";
+import { ref, computed } from "vue";
 import { defineStore } from "pinia";
+import { type IPeople } from "@/Interfaces/IPeople";
 
 export const usePeople = defineStore("people", () => {
-  const people = ref({});
+  const people = ref<IPeople | null>(null);
 
-  const setPeople = (payload: string) => {
+  const setPeople = (payload: IPeople) => {
     people.value = payload;
   };
 
   const reset = () => {
-    people.value = {};
+    people.value = null;
   };
+
+  const specieUrl = computed(() => people.value?.species[0]);
 
   return {
     people,
+    specieUrl,
     setPeople,
     reset,
   };
