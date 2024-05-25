@@ -6,9 +6,11 @@
 
       <Slide />
 
-      <button type="button" class="back" @click="$router.back()">
-        Voltar aos outros personagens
-      </button>
+      <div class="back-container">
+        <button type="button" class="back" @click="$router.back()">
+          Voltar aos outros personagens
+        </button>
+      </div>
     </section>
   </NuxtLayout>
 </template>
@@ -51,7 +53,15 @@ onBeforeUnmount(() => reset());
   font-weight: 700;
   text-align: center;
 }
-.people-container .back {
+.people-container .back-container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  max-width: 1207px;
+  margin: 0 auto;
+}
+.people-container .back-container .back {
   outline: 0px;
   cursor: pointer;
   display: flex;
