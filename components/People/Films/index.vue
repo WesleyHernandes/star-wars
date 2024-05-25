@@ -6,7 +6,7 @@
       <div v-if="current?.url === film.url" class="films-container">
         <Info label="ID do episódio" :value="film?.episode_id" />
         <Info label="Diretor" :value="film?.director" />
-        <Info label="Produtor" :value="film?.productor" />
+        <Info label="Produtor" :value="film?.producer" />
         <Info label="Data de lançamento" :value="film?.release_date" />
       </div>
     </template>
