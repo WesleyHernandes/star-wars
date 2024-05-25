@@ -1,15 +1,17 @@
 <template>
-  <div class="specie-container">
+  <div v-if="specieUrl" class="specie-container">
     <Info label="Nome" :value="specie?.name" />
     <Info label="Classificação" :value="specie?.classification" />
     <Info label="Designação" :value="specie?.designation" />
     <Info label="Peso médio" :value="specie?.average_height" />
     <Info label="Linguagem" :value="specie?.language" />
   </div>
+  <NotFound v-else />
 </template>
 
 <script setup>
 import Info from "@/components/People/Info.vue";
+import NotFound from "@/components/People/NotFound/index.vue";
 import { usePeople } from "@/store/people.ts";
 
 const store = usePeople();

@@ -43,7 +43,7 @@
   z-index: 2;
   display: none;
   width: 37%;
-  max-width: 321px;
+  max-width: 188px;
 }
 @media (min-width: 1024px) {
   .board-container .logo {

@@ -7,7 +7,7 @@
     <input
       class="field"
       placeholder="Busque por pessoas, planetas, naves espaciais.."
-      @keypress="(e) => setQuery(e.target.value)"
+      @keyup="(e) => setQuery(e.target.value)"
     />
 
     <button type="button" class="btn-clear" @click="clearField">

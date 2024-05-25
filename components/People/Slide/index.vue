@@ -82,6 +82,7 @@ const slideOptions = [
   background-color: #000000;
   color: #a5a29a;
   font-size: 20px;
+  transition: all 0.3s ease-in-out;
 }
 .swiper-pagination-bullet-active {
   color: #000000;

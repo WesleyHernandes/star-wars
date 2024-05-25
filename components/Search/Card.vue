@@ -47,6 +47,7 @@ const handlePeople = (people) => {
   width: 100%;
   padding: 30px 25px;
   text-decoration: none;
+  text-align: left;
   border: none;
   background-color: transparent;
 }
