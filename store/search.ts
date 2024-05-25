@@ -1,11 +1,15 @@
+import { ref } from "vue";
 import { defineStore } from "pinia";
 
-export const useSearch = defineStore("search", {
-  state: () => ({ query: "" }),
-  getters: {},
-  actions: {
-    setQuery(payload: string) {
-      this.query = payload;
-    },
-  },
+export const useSearch = defineStore("search", () => {
+  const query = ref("");
+
+  const setQuery = (payload: string) => {
+    query.value = payload;
+  };
+
+  return {
+    query,
+    setQuery,
+  };
 });
