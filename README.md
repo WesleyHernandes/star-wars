@@ -1,10 +1,26 @@
-# Nuxt 3 Minimal Starter
+# 👾 Star Wars ( Nuxt 3 )
 
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+### 🚀 Projeto
+Projeto criado com propósitos de aprendizagem e teste de conhecimentos.
+
+> Referencia: [https://github.com/oderco-ti/teste-frontend](https://github.com/oderco-ti/teste-frontend)
+
+<hr>
+
+### 🖥️ Live Preview
+
+[Veja online ( Clique aqui )](https://star-wars-gamma-lemon.vercel.app/) <br>
+
+#### Servir localmente
+
+## **Clone** o repositório
+
+```bash
+git clone https://github.com/WesleyHernandes/star-wars.git
+```
 
 ## Setup
-
-Make sure to install the dependencies:
+Acesse o diretório clonado e realize a instalação das dependências:
 
 ```bash
 # npm
@@ -20,9 +36,7 @@ yarn install
 bun install
 ```
 
-## Development Server
-
-Start the development server on `http://localhost:3000`:
+## Inicie o servidor
 
 ```bash
 # npm
@@ -38,38 +52,25 @@ yarn dev
 bun run dev
 ```
 
-## Production
+Servidor de desenvolvimentos estará iniciado em: `http://localhost:3000`:
 
-Build the application for production:
+<hr>
 
-```bash
-# npm
-npm run build
+### 📚 Técnologias utilizadas
+![Nuxtjs](https://img.shields.io/badge/Nuxt-002E3B?style=for-the-badge&logo=nuxtdotjs&logoColor=#00DC82)
+![Vue.js](https://img.shields.io/badge/vuejs-%2335495e.svg?style=for-the-badge&logo=vuedotjs&logoColor=%234FC08D)
+![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
+![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
 
-# pnpm
-pnpm run build
+<hr>
 
-# yarn
-yarn build
+### 📝 Licença
+Projeto lançado sobre a [MIT License](./LICENSE) Clique para ver os detalhes.
 
-# bun
-bun run build
-```
+<hr>
 
-Locally preview production build:
+### 🧔 Nota do Desenvolvedor
+Que a força esteja com você!!! 🌌🚀
 
-```bash
-# npm
-npm run preview
 
-# pnpm
-pnpm run preview
 
-# yarn
-yarn preview
-
-# bun
-bun run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
