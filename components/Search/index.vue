@@ -8,7 +8,7 @@
         </h3>
       </div>
 
-      <Field />
+      <Field :loading="pending" />
 
       <div v-if="results.length > 0" class="results">
         <Card

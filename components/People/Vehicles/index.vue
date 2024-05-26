@@ -1,5 +1,6 @@
 <template>
-  <template v-if="vehiclesUrl && options?.length > 0">
+  <Loading v-if="pending" :size="50" :centered="true" />
+  <template v-else-if="vehiclesUrl && options?.length > 0">
     <Selection :options="options" v-model="current" />
 
     <template
@@ -13,8 +14,6 @@
         <Info label="Classe do veiculo" :value="vehicle?.vehicle_class" />
       </div>
     </template>
-
-    <pre>{{ error }}</pre>
   </template>
   <NotFound v-else />
 </template>
@@ -23,6 +22,7 @@
 import Info from "@/components/People/Info.vue";
 import NotFound from "@/components/People/NotFound/index.vue";
 import Selection from "@/components/People/Selection/index.vue";
+import Loading from "@/components/Loading.vue";
 import { watch } from "vue";
 import { usePeople } from "@/store/people.ts";
 

@@ -1,5 +1,6 @@
 <template>
-  <div v-if="specieUrl" class="specie-container">
+  <Loading v-if="pending" :size="50" :centered="true" />
+  <div v-else-if="specieUrl" class="specie-container">
     <Info label="Nome" :value="specie?.name" />
     <Info label="Classificação" :value="specie?.classification" />
     <Info label="Designação" :value="specie?.designation" />
@@ -12,6 +13,7 @@
 <script setup>
 import Info from "@/components/People/Info.vue";
 import NotFound from "@/components/People/NotFound/index.vue";
+import Loading from "@/components/Loading.vue";
 import { usePeople } from "@/store/people.ts";
 
 const store = usePeople();

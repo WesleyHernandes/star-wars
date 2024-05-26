@@ -1,7 +1,8 @@
 <template>
-  <form class="field-container" @submit.prevent="() => {}">
-    <button type="submit" class="btn-send">
-      <IconSend />
+  <form class="field-container">
+    <button type="button" class="btn-send">
+      <Loading v-if="loading" />
+      <IconSend v-else />
     </button>
 
     <input
@@ -20,8 +21,16 @@
 <script setup>
 import IconSend from "./IconSend.vue";
 import IconClear from "./IconClear.vue";
+import Loading from "@/components/Loading.vue";
 import { storeToRefs } from "pinia";
 import { useSearch } from "@/store/search.ts";
+
+defineProps({
+  loading: {
+    type: Boolean,
+    default: false,
+  },
+});
 
 const store = useSearch();
 const { query } = storeToRefs(store);

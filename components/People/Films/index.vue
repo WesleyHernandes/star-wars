@@ -1,5 +1,6 @@
 <template>
-  <template v-if="filmsUrl && options?.length > 0">
+  <Loading v-if="pending" :size="50" :centered="true" />
+  <template v-else-if="filmsUrl && options?.length > 0">
     <Selection :options="options" v-model="current" />
 
     <template v-for="(film, index) in collection" :key="`people-film-${index}`">
@@ -10,8 +11,6 @@
         <Info label="Data de lançamento" :value="film?.release_date" />
       </div>
     </template>
-
-    <pre>{{ error }}</pre>
   </template>
   <NotFound v-else />
 </template>
@@ -20,6 +19,7 @@
 import Info from "@/components/People/Info.vue";
 import NotFound from "@/components/People/NotFound/index.vue";
 import Selection from "@/components/People/Selection/index.vue";
+import Loading from "@/components/Loading.vue";
 import { watch } from "vue";
 import { usePeople } from "@/store/people.ts";
 
