@@ -3,23 +3,38 @@
 ### 🚀 Projeto
 Projeto criado com propósitos de aprendizagem e teste de conhecimentos.
 
-> Referencia: [https://github.com/oderco-ti/teste-frontend](https://github.com/oderco-ti/teste-frontend)
+> Desafio: [https://github.com/oderco-ti/teste-frontend](https://github.com/oderco-ti/teste-frontend)<br>
+> API: [https://swapi.dev/](https://swapi.dev/)
 
 <hr>
 
 ### 🖥️ Live Preview
 
 [Veja online ( Clique aqui )](https://star-wars-gamma-lemon.vercel.app/) <br>
+<hr>
 
-#### Servir localmente
+### 📚 Técnologias aplicadas
+Conceitos utilizados:
 
-## **Clone** o repositório
+#### - Básico
+HTML5, CSS3, Javascript, Typescript, API Rest, Clean code, gestão de tarefas (Kanban).
+
+#### - Vue3
+Componentização, ciclo de vida do componente, gerenciamento de estado com Pinia, refs, props, propriedades computadas, watch, watchEffect.
+
+#### - Nuxt3
+Roteamento de páginas, definição de layouts, componentes Nuxt, middlewares, composables, SSR.
+<hr>
+
+### 🤖 Servir localmente
+
+#### **Clone** o repositório
 
 ```bash
 git clone https://github.com/WesleyHernandes/star-wars.git
 ```
 
-## Setup
+#### Setup
 Acesse o diretório clonado e realize a instalação das dependências:
 
 ```bash
@@ -36,7 +51,7 @@ yarn install
 bun install
 ```
 
-## Inicie o servidor
+#### Inicie o servidor
 
 ```bash
 # npm
@@ -52,15 +67,7 @@ yarn dev
 bun run dev
 ```
 
-Servidor de desenvolvimentos estará iniciado em: `http://localhost:3000`:
-
-<hr>
-
-### 📚 Técnologias utilizadas
-![Nuxtjs](https://img.shields.io/badge/Nuxt-002E3B?style=for-the-badge&logo=nuxtdotjs&logoColor=#00DC82)
-![Vue.js](https://img.shields.io/badge/vuejs-%2335495e.svg?style=for-the-badge&logo=vuedotjs&logoColor=%234FC08D)
-![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
-![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
+O servidor de desenvolvimentos estará iniciado em: `http://localhost:3000`:
 
 <hr>
 
