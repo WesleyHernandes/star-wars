@@ -9,6 +9,11 @@
       </div>
 
       <Field :loading="pending" />
+      <Alert
+        v-if="error && query.length > 0 && endpoint && !pending"
+        type="danger"
+        :text="error.message"
+      />
 
       <div v-if="results.length > 0" class="results">
         <Card
@@ -18,7 +23,7 @@
         />
       </div>
 
-      <template v-if="notFoundVisible">
+      <template v-if="results.length === 0 && query.length > 0 && !pending">
         <NotFound :query="query" />
       </template>
 
@@ -34,14 +39,13 @@ import Card from "./Card.vue";
 import Field from "./Field/index.vue";
 import Pagination from "../Pagination/index.vue";
 import NotFound from "./NotFound.vue";
-import { ref, watch, computed } from "vue";
+import Alert from "@/components/Alert/index.vue";
+import { computed } from "vue";
 import { storeToRefs } from "pinia";
 import { useSearch } from "@/store/search";
 
 const store = useSearch();
 const { query } = storeToRefs(store);
-
-const notFoundVisible = ref(false);
 
 const endpoint = computed(() =>
   query.value ? `https://swapi.dev/api/people/?search=${query.value}` : ""
@@ -51,11 +55,6 @@ const results = computed(() => data.value?.results || []);
 const { data, pending, error, refresh } = await useLazyFetch(endpoint, {
   method: "GET",
   watch: [endpoint],
-});
-
-watch(query.value, () => {
-  data.value.results = [];
-  notFoundVisible.value = false;
 });
 </script>
 

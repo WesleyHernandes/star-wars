@@ -7,12 +7,14 @@
     <Info label="Peso médio" :value="specie?.average_height" />
     <Info label="Linguagem" :value="specie?.language" />
   </div>
-  <NotFound v-else />
+  <Alert v-else text="Informações não encontradas" />
+
+  <Alert v-if="error" type="danger" :text="error.message" />
 </template>
 
 <script setup>
 import Info from "@/components/People/Info.vue";
-import NotFound from "@/components/People/NotFound/index.vue";
+import Alert from "@/components/Alert/index.vue";
 import Loading from "@/components/Loading.vue";
 import { usePeople } from "@/store/people.ts";
 
