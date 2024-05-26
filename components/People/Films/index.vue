@@ -1,5 +1,5 @@
 <template>
-  <template v-if="filmsUrl">
+  <template v-if="filmsUrl && options?.length > 0">
     <Selection :options="options" v-model="current" />
 
     <template v-for="(film, index) in collection" :key="`people-film-${index}`">
@@ -10,6 +10,8 @@
         <Info label="Data de lançamento" :value="film?.release_date" />
       </div>
     </template>
+
+    <pre>{{ error }}</pre>
   </template>
   <NotFound v-else />
 </template>
@@ -18,7 +20,7 @@
 import Info from "@/components/People/Info.vue";
 import NotFound from "@/components/People/NotFound/index.vue";
 import Selection from "@/components/People/Selection/index.vue";
-import { watchEffect } from "vue";
+import { watch } from "vue";
 import { usePeople } from "@/store/people.ts";
 
 const store = usePeople();
@@ -40,13 +42,14 @@ const {
   { watch: [filmsUrl] }
 );
 
-watchEffect(() => {
-  if (collection.value?.length > 0) {
-    options.value = collection.value.map((data) => ({
-      label: data?.title,
-      url: data?.url,
-    }));
-  }
+watch(collection, () => {
+  options.value =
+    collection.value?.length > 0
+      ? (options.value = collection.value.map((data) => ({
+          label: data?.title,
+          url: data?.url,
+        })))
+      : [];
 });
 </script>
 

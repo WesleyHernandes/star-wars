@@ -1,5 +1,5 @@
 <template>
-  <template v-if="vehiclesUrl">
+  <template v-if="vehiclesUrl && options?.length > 0">
     <Selection :options="options" v-model="current" />
 
     <template
@@ -13,6 +13,8 @@
         <Info label="Classe do veiculo" :value="vehicle?.vehicle_class" />
       </div>
     </template>
+
+    <pre>{{ error }}</pre>
   </template>
   <NotFound v-else />
 </template>
@@ -21,6 +23,7 @@
 import Info from "@/components/People/Info.vue";
 import NotFound from "@/components/People/NotFound/index.vue";
 import Selection from "@/components/People/Selection/index.vue";
+import { watch } from "vue";
 import { usePeople } from "@/store/people.ts";
 
 const store = usePeople();
@@ -44,13 +47,14 @@ const {
   { watch: [vehiclesUrl] }
 );
 
-watchEffect(() => {
-  if (collection.value?.length > 0) {
-    options.value = collection.value.map((data) => ({
-      label: data?.name,
-      url: data?.url,
-    }));
-  }
+watch(collection, () => {
+  options.value =
+    collection.value?.length > 0
+      ? (options.value = collection.value.map((data) => ({
+          label: data?.name,
+          url: data?.url,
+        })))
+      : [];
 });
 </script>
 
