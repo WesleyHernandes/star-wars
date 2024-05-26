@@ -23,10 +23,9 @@
 
 <script setup>
 import Icon from "./Icon.vue";
-import { onMounted, watchEffect } from "vue";
+import { watchEffect } from "vue";
 
 const props = defineProps({
-  current: String,
   options: {
     type: Object,
     default: () => [],
@@ -42,7 +41,7 @@ const setCurrent = (payload) => {
 };
 
 watchEffect(() => {
-  if (props.options?.length > 0 && !current.value) {
+  if (props.options?.length > 0) {
     const data = props.options[0];
     current.value = data;
   }

@@ -1,6 +1,6 @@
 <template>
   <template v-if="starshipsUrl">
-    <Selection :current="current" :options="options" v-model="current" />
+    <Selection :options="options" v-model="current" />
 
     <template
       v-for="(starship, index) in collection"

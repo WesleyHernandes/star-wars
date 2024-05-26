@@ -1,6 +1,6 @@
 <template>
   <template v-if="filmsUrl">
-    <Selection :current="current" :options="options" v-model="current" />
+    <Selection :options="options" v-model="current" />
 
     <template v-for="(film, index) in collection" :key="`people-film-${index}`">
       <div v-if="current?.url === film.url" class="films-container">

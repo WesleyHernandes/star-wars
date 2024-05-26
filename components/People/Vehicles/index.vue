@@ -1,6 +1,6 @@
 <template>
   <template v-if="vehiclesUrl">
-    <Selection :current="current" :options="options" v-model="current" />
+    <Selection :options="options" v-model="current" />
 
     <template
       v-for="(vehicle, index) in collection"
