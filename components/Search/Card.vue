@@ -10,6 +10,7 @@
 </template>
 
 <script setup>
+import { useRouter } from "vue-router";
 import { usePeople } from "@/store/people.ts";
 import { formatToUrl } from "@/utils/index.ts";
 
@@ -28,6 +29,8 @@ const handlePeople = (people) => {
   setPeople(people);
   router.push(`/personagem/${formatToUrl(people.name)}`);
 };
+
+defineExpose({ handlePeople });
 </script>
 
 <style scoped>
