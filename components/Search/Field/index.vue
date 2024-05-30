@@ -9,10 +9,10 @@
       class="field"
       placeholder="Busque por pessoas, planetas, naves espaciais.."
       :value="query"
-      @keyup="handleInput"
+      @keyup="(e) => handleInput(e)"
     />
 
-    <button type="button" class="btn-clear" @click="clearField">
+    <button type="button" class="btn-clear" @click="(e) => clearField(e)">
       <IconClear />
     </button>
   </form>
@@ -43,6 +43,8 @@ const handleInput = (e) => {
 };
 
 const clearField = () => setQuery("");
+
+defineExpose({ handleInput, clearField });
 </script>
 
 <style scoped>
