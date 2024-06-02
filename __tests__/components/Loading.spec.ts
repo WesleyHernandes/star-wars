@@ -1,7 +1,7 @@
 import { describe, it, expect, vi } from "vitest";
 import { mount } from "@vue/test-utils";
 
-import Loading from "./Loading.vue";
+import Loading from "@/components/Loading.vue";
 
 describe("Component Loading.vue", () => {
   it("should on receive props size, set css style", async () => {
@@ -14,7 +14,6 @@ describe("Component Loading.vue", () => {
     const loading = wrapper.find(".loading");
     await wrapper.vm.$nextTick();
 
-    console.log(loading.attributes("style"));
     expect(loading.attributes("style")).contains(
       `width: ${size}px; height: ${size}px;`
     );
