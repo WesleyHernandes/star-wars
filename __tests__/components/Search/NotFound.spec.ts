@@ -1,7 +1,7 @@
 import { describe, it, expect } from "vitest";
 import { mount } from "@vue/test-utils";
 
-import NotFound from "./NotFound.vue";
+import NotFound from "@/components/Search/NotFound.vue";
 
 describe("Not found component", () => {
   it("The query that was not found should appear on the screen", () => {

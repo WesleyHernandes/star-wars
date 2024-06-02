@@ -2,7 +2,7 @@ import { describe, it, expect, vi } from "vitest";
 import { mount } from "@vue/test-utils";
 import { character } from "@/mock/character";
 
-import Card from "./Card.vue";
+import Card from "@/components/Search/Card.vue";
 import { usePeople } from "@/store/people";
 import { createTestingPinia } from "@pinia/testing";
 import { formatToUrl } from "@/utils";

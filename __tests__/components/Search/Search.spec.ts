@@ -3,11 +3,18 @@ import { flushPromises, mount } from "@vue/test-utils";
 import { defineComponent } from "vue";
 import { createTestingPinia } from "@pinia/testing";
 import { character } from "@/mock/character";
-import Search from "./index.vue";
+import Search from "@/components/Search/index.vue";
 import { useSearch } from "@/store/search";
 
 const pinia = createTestingPinia();
 const useSearchStore = useSearch(pinia);
+
+const pushRouter = vi.fn();
+vi.mock("vue-router", () => ({
+  useRouter: () => ({
+    push: pushRouter,
+  }),
+}));
 
 const renderSearch = async () => {
   return mount(

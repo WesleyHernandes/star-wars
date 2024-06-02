@@ -2,7 +2,7 @@ import { describe, it, expect, vi } from "vitest";
 import { mount } from "@vue/test-utils";
 import { createTestingPinia } from "@pinia/testing";
 
-import Field from "./index.vue";
+import Field from "@/components/Search/Field/index.vue";
 import { useSearch } from "@/store/search";
 
 const pinia = createTestingPinia();
